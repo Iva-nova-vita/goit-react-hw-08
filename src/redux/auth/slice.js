@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { fetchContacts, addContact, deleteContact } from './operations';
+import { register} from './operations';
+import toast from 'react-hot-toast';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -12,47 +13,18 @@ const authSlice = createSlice({
       isLoggedIn: false,
       isRefreshing: false,
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(fetchContacts.pending, (state) => {
-  //       state.loading = true;
-  //       state.error = false;
-  //     })
-  //     .addCase(fetchContacts.fulfilled, (state, action) => {
-  //       state.items = action.payload;
-  //       state.loading = false;
-  //     })
-  //     .addCase(fetchContacts.rejected, (state) => {
-  //       state.loading = false;
-  //       state.error = true;
-  //     })
-  //     .addCase(addContact.pending, (state) => {
-  //       state.loading = true;
-  //       state.error = false;
-  //     })
-  //     .addCase(addContact.fulfilled, (state, action) => {
-  //       state.items.push(action.payload);
-  //       state.loading = false;
-  //     })
-  //     .addCase(addContact.rejected, (state) => {
-  //       state.loading = false;
-  //       state.error = true;
-  //     })
-  //     .addCase(deleteContact.pending, (state) => {
-  //       state.loading = true;
-  //       state.error = false;
-  //     })
-  //     .addCase(deleteContact.fulfilled, (state, action) => {
-  //       state.items = state.items.filter(
-  //         (item) => item.id !== action.payload.id
-  //       );
-  //       state.loading = false;
-  //     })
-  //     .addCase(deleteContact.rejected, (state) => {
-  //       state.loading = false;
-  //       state.error = true;
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+       
+      })
+      .addCase(register.rejected, (state, action) => {
+        toast.error(action.payload)
+      })
+  },
 });
 
 export const selectAuth = (state) => state.contacts.auth;
