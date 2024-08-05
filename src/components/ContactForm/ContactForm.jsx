@@ -20,7 +20,7 @@ export default function ContactForm() {
       .min(3, 'Too Short!')
       .max(50, 'Too Long!')
       .required('Required'),
-    phone: Yup.string()
+      number: Yup.string()
       .min(3, 'Too Short!')
       .max(50, 'Too Long!')
       .required('Required'),
@@ -28,7 +28,7 @@ export default function ContactForm() {
 
   const initialValues = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   return (
@@ -49,10 +49,10 @@ export default function ContactForm() {
         </div>
         <div className={css.wrap}>
           <label htmlFor={phoneId}>Number</label>
-          <Field type='text' name='phone' id={phoneId} />
+          <Field type='text' name='number' id={phoneId} />
           <ErrorMessage
             className={css.errorMessage}
-            name='phone'
+            name='number'
             component='span'
           />
         </div>

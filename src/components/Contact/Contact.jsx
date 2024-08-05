@@ -13,7 +13,7 @@ export default function Contact({ item}) {
   return (
     <li className={css.item}>
       <div className={css.name}><FaUser/>{item.name}</div>
-      <div className={css.phone}><FaPhone />{item.phone}</div>
+      <div className={css.phone}><FaPhone />{item.number}</div>
       <button className={css.btnDelete} onClick={()=>handleClick(item.id)}>
         Delete
       </button>
