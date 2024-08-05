@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useId } from 'react';
 import { addContact } from '../../redux/contacts/operations';
 import * as Yup from 'yup';
+import Button from '@mui/material/Button';
 
 import css from './ContactForm.module.css';
 
@@ -56,9 +57,9 @@ export default function ContactForm() {
             component='span'
           />
         </div>
-        <button className={css.btnSubmit} type='submit'>
+        <Button className={css.btnSubmit} variant="outlined" type='submit'>
             Submit
-          </button>
+          </Button>
       </Form>
     </Formik>
   );

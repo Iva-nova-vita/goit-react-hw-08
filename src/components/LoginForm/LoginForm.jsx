@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
+import Button from '@mui/material/Button';
 import css from "./LoginForm.module.css";
 
 export default function LoginForm() {
@@ -28,7 +29,7 @@ export default function LoginForm() {
           Password
           <Field type="password" name="password" />
         </label>
-        <button type="submit">Log In</button>
+        <Button variant="outlined" type="submit">Log In</Button>
       </Form>
     </Formik>
   );

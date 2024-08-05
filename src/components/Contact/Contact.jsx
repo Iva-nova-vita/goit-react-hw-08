@@ -3,6 +3,7 @@ import { FaPhone } from "react-icons/fa6";
 import css from './Contact.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from "../../redux/contacts/operations";
+import Button from '@mui/material/Button';
 
 export default function Contact({ item}) {
   const dispatch = useDispatch();
@@ -14,9 +15,9 @@ export default function Contact({ item}) {
     <li className={css.item}>
       <div className={css.name}><FaUser/>{item.name}</div>
       <div className={css.phone}><FaPhone />{item.number}</div>
-      <button className={css.btnDelete} onClick={()=>handleClick(item.id)}>
+      <Button className={css.btnDelete} variant="outlined" color="error" onClick={()=>handleClick(item.id)}>
         Delete
-      </button>
+      </Button>
     </li>
   );
 }
