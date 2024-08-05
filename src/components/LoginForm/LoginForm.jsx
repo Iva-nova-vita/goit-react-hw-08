@@ -1,14 +1,14 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
-// import { logIn } from "../../redux/auth/operations";
+import { login } from "../../redux/auth/operations";
 import css from "./LoginForm.module.css";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    // dispatch(logIn(values));
-    // actions.resetForm();
+    dispatch(login(values));
+    actions.resetForm();
   };
 
   return (

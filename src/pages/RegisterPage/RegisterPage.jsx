@@ -6,7 +6,6 @@ export default function RegisterPage() {
     <div>
       <PageTitle>Register your account</PageTitle>
       <RegistrationForm />
-      
     </div>
   );
 }
