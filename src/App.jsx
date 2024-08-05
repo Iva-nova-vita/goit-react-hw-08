@@ -19,7 +19,7 @@ function App() {
   }, [dispatch]);
 
   const isRefreshing = useSelector(selectIsRefreshing);
-  
+
   return isRefreshing ? (
     <div>Refreshing user please wait...</div>
   ) : (
@@ -27,7 +27,7 @@ function App() {
       <Suspense fallback={null}>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/tasks' element={<ContactsPage />} />
+          <Route path='/contacts' element={<ContactsPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
         </Routes>
