@@ -24,7 +24,7 @@ export default function ContactsPage() {
       <SearchBox></SearchBox>
       {loading && <div>Loading ...</div>}
       {isError && <div>Something went wrong</div>}
-      <ContactList></ContactList>
+      {!loading && <ContactList></ContactList>}
     </>
   );
 }
