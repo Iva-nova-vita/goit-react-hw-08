@@ -1,7 +1,10 @@
 import Layout from './components/Layout/Layout';
 import { Route, Routes } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { refreshUser } from './redux/auth/operations';
+import { selectIsRefreshing } from './redux/auth/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -10,7 +13,16 @@ const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 
 function App() {
-  return (
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const isRefreshing = useSelector(selectIsRefreshing);
+  
+  return isRefreshing ? (
+    <div>Refreshing user please wait...</div>
+  ) : (
     <Layout>
       <Suspense fallback={null}>
         <Routes>
